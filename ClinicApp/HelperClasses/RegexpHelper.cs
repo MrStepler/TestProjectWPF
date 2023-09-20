@@ -15,6 +15,6 @@ namespace ClinicApp
             Regex regex = new Regex(@"([А-ЯЁ][а-яё]+[\-\s]?){3,}");
             return regex.IsMatch(name);
         }
-
+       
     }
 }

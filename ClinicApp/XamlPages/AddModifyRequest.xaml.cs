@@ -98,7 +98,8 @@ namespace ClinicApp.XamlPages
                         m_request.DateOfRequest = dateOfRequest.GetValueOrDefault(DateTime.Now);
                         m_request.Purpose = purpose;
                         m_request.RequestType = requestType;
-                        m_request.Patient = new PatientCard();
+                        // Third bug solve
+                        m_request.Patient = m_patient;
                         isSucceed = repository.ModifyRequest(m_request);
                     }
                     #endregion

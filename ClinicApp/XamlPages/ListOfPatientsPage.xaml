@@ -4,12 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClinicApp.XamlPages"
+      
       xmlns:localModels="clr-namespace:ClinicApp.EntityModels"
       mc:Ignorable="d" 
-      d:DesignHeight="300" Width="1200"
+      d:DesignHeight="300" Width="1260"
       Title="ListOfPatientsPage" Loaded="Page_Loaded" x:Name="page" Background="White">
     <Page.Resources>
         <local:EnumDescriptionConverter x:Key="EnumDescriptionConverter"/>
+        <local:AgeConverter x:Key="AgeConverter"/>
     </Page.Resources>
     <DockPanel LastChildFill="True" Background="White">
         <ToolBar x:Name="toolBar" DockPanel.Dock="Top" Background="White">
@@ -39,6 +41,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="iDColumn" Binding="{Binding Id}" Header="ID" Width="35"/>
                     <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="ФИО" Width="200"/>
+                    <DataGridTextColumn x:Name="ageColumn" Binding="{Binding DateOfBirth,Converter={StaticResource AgeConverter}}" Header="Возраст" Width="60"/>
                     <DataGridTextColumn x:Name="nameAddress" Binding="{Binding Address}" Header="Адрес" Width="385"/>
                     <DataGridTextColumn x:Name="dateOfBirthColumn" Binding="{Binding DateOfBirth, StringFormat=dd.MM.yyyy}" Header="Дата рождения" Width="110"/>
                     <DataGridTextColumn x:Name="phoneNumberColumn" Binding="{Binding PhoneNumber}" Header="Телефон" Width="125"/>

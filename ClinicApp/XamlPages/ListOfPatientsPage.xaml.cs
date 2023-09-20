@@ -7,6 +7,8 @@ using ClinicApp.EntityModels;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClinicApp.XamlPages
 {
@@ -84,7 +86,6 @@ namespace ClinicApp.XamlPages
                 MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                
                 var currentCard = dgPatients.SelectedItem as PatientCard;
                 if (currentCard != null)
                 {
@@ -114,6 +115,7 @@ namespace ClinicApp.XamlPages
         private async void btnPatientRequests_Click(object sender, RoutedEventArgs e)
         {
             var currentCard = dgPatients.SelectedItem as PatientCard;
+            tempCard = currentCard;
             if (currentCard != null)
             {
                 //in order to see the requests we are switching DataGrids here
@@ -141,6 +143,7 @@ namespace ClinicApp.XamlPages
         private void btnAddNewRequest_Click(object sender, RoutedEventArgs e)
         {
             var currentCard = dgPatients.SelectedItem as PatientCard;
+
             //if the btnAddNewRequest has been clicked from the patient's card
             //we are placing current card to the temp variable and invoking AddNewRequest 
             if (currentCard != null)
@@ -155,6 +158,7 @@ namespace ClinicApp.XamlPages
         //goes to AddModifyPatient page where a user can manage a patient info
         private void btnModifyPatient_Click(object sender, RoutedEventArgs e)
         {
+            //var currentCard = PatientCardDTO.ConvertToPatientCard(dgPatients.SelectedItem as PatientCardDTO);
             var currentCard = dgPatients.SelectedItem as PatientCard;
             if (currentCard != null)
             {
